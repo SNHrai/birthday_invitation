@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Party Invitation!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6B95 100%);
+            min-height: 100vh;
+            font-family: 'Fredoka', sans-serif;
+        }
+        .card {
+            max-width: 90%;
+            width: 500px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+        .main-title {
+            font-family: 'Pacifico', cursive;
+            color: #FF4081;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .boy-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 8px solid #FFD700;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+        .details {
+            background: linear-gradient(135deg, #FFE5E5 0%, #FFF4E4 100%);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 15px 0;
+        }
+        .details p {
+            margin: 8px 0;
+            font-size: 1.1rem;
+            color: #444;
+        }
+        .activities {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        .rsvp-button {
+            background: linear-gradient(45deg, #FF4081, #FF6B95);
+            border: none;
+            padding: 12px 35px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .rsvp-button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #FF6B95, #FF4081);
+        }
+        .balloon {
+            position: fixed;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @media (max-width: 576px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            .boy-image {
+                width: 200px;
+            height: 200px;
+            }
+            .card {
+                margin: 10px auto;
+                padding: 15px;
+            }
+            .details p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti" id="confetti"></div>
+    
+    <div class="card animate__animated animate__bounceIn">
+        <!-- Update in card-body section -->
+<div class="card-body text-center">
+    <img src="Image__2.png" alt="Birthday Boy" class="boy-image animate__animated animate__pulse animate__infinite">
+    
+    <h1 class="main-title animate__animated animate__rubberBand animate__delay-1s">🎉 You're Invited! 🎉</h1>
+    
+    <h3 class="animate__animated animate__fadeIn animate__delay-2s" style="color: #666;">Join us for</h3>
+    <h2 class="animate__animated animate__bounceIn animate__delay-2s" style="color: #FF4081; font-weight: 600;">Lakshyravi's Birthday Bash!</h2>
+    
+    <div class="details animate__animated animate__fadeInUp animate__delay-3s">
+        <p><strong>📅 Date:</strong> November 17th, 2024</p>
+        <p><strong>⏰ Time:</strong> 7:00 PM onwards</p>
+        <p><strong>📍 Location:</strong> Chandrabhushan Complex</p>
+        <p><strong>🗺️ Address:</strong> Room No. 87, Deshekar Nagar, Titwala East</p>
+    </div>
+    
+    <div class="activities animate__animated animate__shakeX animate__delay-4s">
+        <h4 style="color: #FF4081;">Get Ready For:</h4>
+        <p>🎵 DJ Night • 🎂 Cake Cutting • 🎁 Surprises</p>
+        <p>🍽️ Dinner with Your Favorite People • ✨ Memorable Moments</p>
+    </div>
+    
+    <button class="rsvp-button btn btn-primary btn-lg mt-4 animate__animated animate__pulse animate__infinite">
+        RSVP Now!
+    </button>
+</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.12.0/tsparticles.confetti.bundle.min.js"></script>
+    <script>
+        // Confetti effect
+        const duration = 8000;
+        const animationEnd = Date.now() + duration;
+        let skew = 1;
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        (function frame() {
+            const timeLeft = animationEnd - Date.now();
+            const ticks = Math.max(200, 500 * (timeLeft / duration));
+            skew = Math.max(0.8, skew - 0.001);
+
+            confetti({
+                particleCount: 1,
+                startVelocity: 0,
+                ticks: ticks,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random() * skew - 0.2
+                },
+                colors: ['#FFD700', '#FF69B4', '#87CEEB', '#98FB98'],
+                shapes: ['circle', 'square'],
+                gravity: randomInRange(0.4, 0.6),
+                scalar: randomInRange(0.8, 1.2),
+                drift: randomInRange(-0.4, 0.4)
+            });
+
+            if (timeLeft > 0) {
+                requestAnimationFrame(frame);
+            }
+        }());
+
+        // Add floating balloons
+        const colors = ['#FF69B4', '#87CEEB', '#98FB98', '#FFD700'];
+        for(let i = 0; i < 10; i++) {
+            const balloon = document.createElement('div');
+            balloon.innerHTML = '🎈';
+            balloon.className = 'balloon';
+            balloon.style.left = `${Math.random() * 100}vw`;
+            balloon.style.top = `${Math.random() * 100}vh`;
+            balloon.style.fontSize = `${Math.random() * 30 + 20}px`;
+            balloon.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(balloon);
+        }
+    </script>
+</body>
+</html>
